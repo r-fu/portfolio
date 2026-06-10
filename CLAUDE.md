@@ -2,32 +2,32 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Overview
+## 概要
 
-A single-page personal portfolio site (Japanese language) built with plain HTML, CSS, and jQuery. There is no build system, package manager, linter, or test suite — files are edited directly and served as-is.
+素の HTML・CSS・jQuery で作られたシングルページの個人ポートフォリオサイト（日本語）です。ビルドシステム、パッケージマネージャー、リンター、テストスイートはありません。ファイルを直接編集し、そのまま配信します。
 
-## Development
+## 開発
 
-There are no build or test commands. To preview the site locally, serve the repo root with any static file server, e.g.:
+ビルドやテストのコマンドはありません。ローカルでプレビューするには、リポジトリのルートを任意の静的ファイルサーバーで配信します。例:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000`. Opening `index.html` directly in a browser also works.
+その後 `http://localhost:8000` を開きます。`index.html` をブラウザで直接開いても動作します。
 
-## Structure
+## 構成
 
-- `index.html` — the entire site: one page with four anchor-linked sections (`#Profile`, `#skill`, `#works`, `#contact`) plus the PhotoSwipe lightbox markup at the bottom of `<body>`.
-- `css/style.css` — all custom styles, organized with section-divider comments. Responsive breakpoints are at `max-width: 767px` and `max-width: 540px`. `css/reset.css` is a CSS reset.
-- `js/script.js` — custom behavior: smooth scrolling for anchor links, the fixed nav on scroll, and PhotoSwipe initialization.
-- `css/photoswipe/` and `js/photoswipe/` — vendored PhotoSwipe lightbox library plus its setup script (`js/photoswipe/photoswipe_setup.js`). Treat the library files as third-party; only `photoswipe_setup.js` is meant to be customized.
+- `index.html` — サイト全体。アンカーリンクされた4つのセクション（`#Profile`、`#skill`、`#works`、`#contact`）を持つ1ページと、`<body>` 末尾の PhotoSwipe ライトボックス用マークアップで構成されます。
+- `css/style.css` — カスタムスタイルすべて。セクション区切りコメントで整理されています。レスポンシブのブレークポイントは `max-width: 767px` と `max-width: 540px` です。`css/reset.css` は CSS リセットです。
+- `js/script.js` — カスタムの挙動: アンカーリンクのスムーススクロール、スクロール時のナビ固定、PhotoSwipe の初期化。
+- `css/photoswipe/` と `js/photoswipe/` — 同梱（vendored）の PhotoSwipe ライトボックスライブラリと、そのセットアップスクリプト（`js/photoswipe/photoswipe_setup.js`）。ライブラリ本体はサードパーティとして扱い、カスタマイズしてよいのは `photoswipe_setup.js` のみです。
 
-## Key conventions
+## 主な規約
 
-- External dependencies (jQuery 1.12.4, Bootstrap 4.1.3 CSS, Font Awesome 5.2, Google Fonts) are loaded from CDNs in `index.html` — there is no `node_modules` or local copy of these.
-- Bootstrap is used for table styling (`table table-borderless`) in the SKILL section; layout otherwise uses custom classes (`card`, `card-wrapper`, `two-column-wrapper`, etc.) defined in `css/style.css`.
-- Skill ratings are rendered with `rate rate1`–`rate rate5` classes inside `.rating` spans.
-- WORKS entries are `<figure class="card">` blocks inside `.my-gallery`; the PhotoSwipe `<a>` wrappers are currently commented out, so thumbnails are not clickable lightbox items.
-- Site content (profile text, skills, works) is written in Japanese; keep new user-facing content in Japanese to match.
-- Commit messages in this repo are written in Japanese.
+- 外部依存（jQuery 1.12.4、Bootstrap 4.1.3 CSS、Font Awesome 5.2、Google Fonts）は `index.html` で CDN から読み込みます。`node_modules` やローカルコピーはありません。
+- Bootstrap は SKILL セクションのテーブルスタイル（`table table-borderless`）にのみ使用しています。レイアウトはそれ以外、`css/style.css` で定義されたカスタムクラス（`card`、`card-wrapper`、`two-column-wrapper` など）を使います。
+- スキル評価は `.rating` スパン内の `rate rate1`〜`rate rate5` クラスで描画します。
+- WORKS の各エントリは `.my-gallery` 内の `<figure class="card">` ブロックです。PhotoSwipe 用の `<a>` ラッパーは現在コメントアウトされているため、サムネイルはライトボックスとしてクリックできません。
+- サイトのコンテンツ（プロフィール文、スキル、制作物）は日本語で書かれています。新しいユーザー向けコンテンツも日本語で統一してください。
+- このリポジトリのコミットメッセージは日本語で書きます。
